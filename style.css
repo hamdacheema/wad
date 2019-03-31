@@ -1,0 +1,19 @@
+
+p {
+    color: #C5E1A5;
+    text-decoration: darkolivegreen;
+}
+
+.bg
+{
+    background-image: url(https://images.wallpaperscraft.com/image/ostrich_fern_fern_leaves_124311_1920x1080.jpg);
+    background-repeat: no-repeat;
+}
+#pos
+{
+    position: center;
+    border: 5px solid darkolivegreen;
+    border-radius: 30px;
+    cursor:grab;
+
+}
