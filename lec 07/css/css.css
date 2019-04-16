@@ -1,0 +1,26 @@
+.box
+{
+
+
+    color:red;
+    display: inline-block;
+    border:5px  solid blue;
+    padding: 20px 50px 5px 9px;
+    margin: 30px;
+    width: 50px;
+    height: 50px;
+}
+
+
+.highlight
+{
+
+    word-spacing: 4px;
+    letter-spacing: 2px;
+    text-decoration: overline;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 2em;
+    position: fixed;
+   font-family: 'Dancing Script', cursive;
+}
