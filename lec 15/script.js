@@ -13,8 +13,7 @@ var button=document.getElementById("enter");
 var input=document.getElementById("user-input");
 var ul =document.getElementsByTagName("ul")[0];
 var listitems =document.getElementsByTagName("li");
-
-
+var deletebuttons =document.getElementsByClassName("del");
 //console.log(button);
 function inputlength()
 {
@@ -27,14 +26,24 @@ function createlistitem()
 {
     var listitem = document.createElement("li");
     listitem.append(document.createTextNode(input.value));
+    var delbutton =document.createElement("button");
+    delbutton.append(document.createTextNode("delete"));
+    listitem.append(delbutton);
     ul.append(listitem);
     input.value='';
+    delbutton.classList.add("del");
+    deletebutton();
+    AddDonelistener();
+
+
+
 }
 function additemafterclick()
 {
     if(inputlength())
     {
         createlistitem();
+
     }
 
 
@@ -56,12 +65,31 @@ function isddone()
 
 button.addEventListener("click",additemafterclick);
 input.addEventListener("keypress",additemafterenter);
+/*deletebuttons.addEventListener("click",deletebutton);*/
 
-for(var a=0;a<listitems.length;a++)
-{
+function AddDonelistener() {
 
-    listitems[a].addEventListener("click",isddone);
+
+    for (var a = 0; a < listitems.length; a++) {
+
+        listitems[a].addEventListener("click", isddone);
+    }
 }
+function  deleteitems()
+{
+    this.parentElement.remove();
+}
+function  deletebutton()
+{
+    for(var a=0;a<deletebuttons.length;a++)
+    {
+
+        deletebuttons[a].addEventListener("click",deleteitems);
+    }
+}
+
+deletebutton();
+AddDonelistener();
 
 
 
