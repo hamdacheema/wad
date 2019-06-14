@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+$con = mysqli_connect("localhost","root","","tech_box_db");
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -64,11 +67,15 @@
                     Categories
                 </a>
                 <ul class="collapse show list-unstyled" id="homeSubmenu">
-                    <li><a class='nav-link'  href='#'>Laptops</a></li>
-                    <li><a class='nav-link'  href='#'>Computers</a></li>
-                    <li><a class='nav-link'  href='#'>Mobiles</a></li>
-                    <li><a class='nav-link'  href='#'>Watches</a></li>
-                    <li><a class='nav-link'  href='#'>Cameras</a></li>
+                    <?php
+                    $getCatsQuery = "select * from categories";
+                    $getCatsResult = mysqli_query($con,$getCatsQuery);
+                    while($row = mysqli_fetch_assoc($getCatsResult)){
+                        $cat_id = $row['cat_id'];
+                        $cat_title = $row['cat_title'];
+                        echo "<li><a class='nav-link'  href='#'>$cat_title</a></li>";
+                    }
+                    ?>
                 </ul>
             </li>
             <li class="active">
@@ -77,11 +84,15 @@
                     Brands
                 </a>
                 <ul class="collapse show list-unstyled" id="pageSubmenu">
-                    <li><a class='nav-link'  href='#'>HP</a></li>
-                    <li><a class='nav-link'  href='#'>DELL</a></li>
-                    <li><a class='nav-link'  href='#'>APPLE</a></li>
-                    <li><a class='nav-link'  href='#'>SAMSUNG</a></li>
-                    <li><a class='nav-link'  href='#'>SONY</a></li>
+                    <?php
+                        $getBrandsQuery = "select * from brands";
+                        $getBrandsResult = mysqli_query($con,$getBrandsQuery);
+                        while($row = mysqli_fetch_assoc($getBrandsResult)){
+                            $brand_id = $row['brand_id'];
+                            $brand_title = $row['brand_title'];
+                            echo "<li><a class='nav-link'  href='#'>$brand_title</a></li>";
+                        }
+                    ?>
                 </ul>
             </li>
             <li>
