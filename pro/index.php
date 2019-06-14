@@ -112,7 +112,17 @@ $con = mysqli_connect("localhost","root","","tech_box_db");
     <article id="content" class="container-fluid bg-white">
 
         <div class="row">
-                Coming Soon
+            <ul class="collapse show list-unstyled" id="pageSubmenu">
+                <?php
+                $getproductsQuery = "select * from products";
+                $getproductsResult = mysqli_query($con,$getproductsQuery);
+                while($row = mysqli_fetch_assoc($getproductsResult)){
+                    $products_id = $row['pro_id'];
+                    $products_title = $row['pro_title'];
+                    echo "<option value='$products_id'>$products_title</option>";
+                }
+                ?>
+            </ul>
         </div>
     </article>
 
