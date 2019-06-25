@@ -1,6 +1,12 @@
 <?php
 require_once "db_connection.php";
 
+
+if(isset($_GET['sval'])){
+    getPro();
+
+}
+
 function getCats(){
     global $con;
     $getCatsQuery = "select * from categories";
@@ -26,7 +32,7 @@ function getBrands(){
 function getPro(){
     global $con;
     $getProQuery = '';
-    if(!isset($_GET['cat']) && !isset($_GET['brand']) && !isset($_GET['search'])){
+    if(!isset($_GET['cat']) && !isset($_GET['brand']) && !isset($_GET['search'])&&!isset($_GET['sval'])){
         $getProQuery = "select * from products order by RAND();";
     }
     else if(isset($_GET['cat'])){
@@ -37,8 +43,8 @@ function getPro(){
         $pro_brand_id = $_GET['brand'];
         $getProQuery = "select * from products where pro_brand = '$pro_brand_id'";
     }
-    else if(isset($_GET['search'])){
-        $user_query = $_GET['search'];
+    else if(isset($_GET['search']) || isset($_GET['sval']) ){
+        $user_query = $_GET['sval'];
         $getProQuery = "select * from products where pro_keywords like '%$user_query%'";
     }
     $getProResult = mysqli_query($con,$getProQuery);
